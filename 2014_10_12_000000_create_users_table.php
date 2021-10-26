@@ -17,17 +17,14 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('last_name');
-            $table->string('offer');
             $table->string('email')->unique();
             $table->integer('phone_number');
-            $table->integer('saldo');
             $table->string('password');
-            $table->timestamps();
 
             //declaracion de clave foranea de Offer
             
-           // $table->unsignedBigInteger('offer_id');
-           // $table->foreign('offer_id')->references('id')->on('offers');
+          //  $table->unsignedBigInteger('offer_id');
+          //  $table->foreign('offer_id')->references('id')->on('offers');
         });
     }
 

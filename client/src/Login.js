@@ -32,23 +32,31 @@ const Login=()=>{
     const signIn = () =>
     {
  
-      const users = { username };  // To Store Email in Localstore and send to Home Page 
+      const users = { username, password };  // To Store Email in Localstore and send to Home Page 
  
        if(user.email === '')
        {
          alert('Email Field is empty')
+        
        }
-       else if(user.password === '')
+        if(user.password === '')
        {
          alert('Pass Field is empty')
+         return;
        }
- 
-       axios.post("http://localhost:8000/api/reactlogin/",user)
-       .then(response => {
-        setMsg(response.data);
-        localStorage.setItem("users",response.data);
-        history.push("/Home");
-      });
+       try {
+        axios.post("http://localhost:8000/api/login",user)
+        .then(response => {
+         setMsg(response.data);
+        
+         localStorage.setItem("users",response.data);
+         history.push("/Home");
+       });  
+       } catch (e) {
+         console.log("error", e)
+
+       }
+       
     }
  
     

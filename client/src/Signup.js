@@ -14,20 +14,24 @@ const Signup=()=>{
     const[errors,setErrors] = useState('');
     const [user, setUser] = useState({
         name: "",
+        lastname:"",
         email: "",
+        phonenumber:"",
         password:""
       });
       
-      const {name, email,password} = user;
+      const {name,lastname, email,phonenumber, password} = user;
       const onInputChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
       };
  
    async function  signup()
        {
+        console.log('usuario', user);
         let result = await axios.post("http://localhost:8000/api/register",user);
+         
         setErrors('Registration Successful')
-        setUser({name:"",email:"",password:""}) // To Clear all fields
+        setUser({name:"",lastname:"", email:"",phonenumber:"", password:""}) // To Clear all fields
  
         }  
      
@@ -41,7 +45,9 @@ const Signup=()=>{
                 </Grid>
                 
                 <TextField label='Nombre' name="name" value={name} onChange={e => onInputChange(e)} placeholder='Nombre' type='text' fullWidth required/>
+                <TextField label='Apellido' name="lastname" value={lastname} onChange={e => onInputChange(e)} placeholder='Apellido' type='text' fullWidth required/>
                 <TextField label='Email'  name="email" value={email}  onChange={e => onInputChange(e)} placeholder='Email' type='text' fullWidth required/>
+                <TextField label='Teléfono' name="phonenumber" value={phonenumber} onChange={e => onInputChange(e)} placeholder='Teléfono' type='text' fullWidth required/>
                 <TextField label='Password'  name="password" value={password}  onChange={e => onInputChange(e)} placeholder=' password' type='text' fullWidth required/>
              
                 <Button type='submit' onClick={signup} color='primary' variant="contained" style={btnstyle} fullWidth>Singup</Button>

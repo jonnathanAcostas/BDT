@@ -1,7 +1,17 @@
 .App {
   text-align: center;
 }
-
+.banner{
+  overflow:hidden;
+  width:100%;
+  height:height;
+  margin:0 ;
+  padding:0;
+  background: url("http://mexicocarrental.mx/wp-content/uploads/2015/07/manzanillo-04.jpg") no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #464646;}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
